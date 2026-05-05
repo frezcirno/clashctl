@@ -5,11 +5,13 @@ build-backend = "hatchling.build"
 [project]
 name = "clashctl"
 version = "0.1.0"
-description = "TUI for the Clash proxy RESTful API"
+description = "TUI for the Clash/Mihomo proxy"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
-authors = [{ name = "Zixuan Tan" }]
+authors = [
+    { name = "Zixuan Tan", email = "tanzixuan.me@gmail.com" },
+]
 dependencies = [
     "textual>=0.85",
     "httpx>=0.27",
