@@ -1,0 +1,24 @@
+{
+  "downloadTotal": 12345678,
+  "uploadTotal": 234567,
+  "connections": [
+    {
+      "id": "abc-123",
+      "upload": 1024,
+      "download": 8192,
+      "metadata": {
+        "type": "HTTP",
+        "sourceIP": "192.168.1.10",
+        "sourcePort": "54321",
+        "destinationIP": "172.217.16.142",
+        "destinationPort": "443",
+        "host": "www.google.com",
+        "network": "tcp"
+      },
+      "rule": "DomainSuffix",
+      "rulePayload": "google.com",
+      "start": "2024-05-01T12:34:56.789Z",
+      "chains": ["Manual", "JP-1"]
+    }
+  ]
+}

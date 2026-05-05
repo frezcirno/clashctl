@@ -1,0 +1,48 @@
+{
+  "proxies": {
+    "DIRECT": {
+      "type": "Direct",
+      "history": [],
+      "name": "DIRECT",
+      "udp": true
+    },
+    "REJECT": {
+      "type": "Reject",
+      "history": [],
+      "name": "REJECT",
+      "udp": true
+    },
+    "GLOBAL": {
+      "type": "Selector",
+      "history": [],
+      "all": ["Auto", "Manual", "DIRECT"],
+      "now": "Manual"
+    },
+    "Auto": {
+      "type": "URLTest",
+      "history": [],
+      "all": ["JP-1", "US-1"],
+      "now": "JP-1"
+    },
+    "Manual": {
+      "type": "Selector",
+      "history": [],
+      "all": ["JP-1", "US-1", "DIRECT"],
+      "now": "US-1"
+    },
+    "JP-1": {
+      "type": "Vmess",
+      "history": [
+        {"time": "2024-01-01T00:00:00.000Z", "delay": 142}
+      ],
+      "udp": true
+    },
+    "US-1": {
+      "type": "Shadowsocks",
+      "history": [
+        {"time": "2024-01-01T00:00:00.000Z", "delay": 0}
+      ],
+      "udp": false
+    }
+  }
+}

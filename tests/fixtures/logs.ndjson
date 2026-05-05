@@ -1,0 +1,4 @@
+{"type": "info", "payload": "started"}
+{"type": "warning", "payload": "deprecated rule"}
+{"type": "error", "payload": "boom"}
+{"type": "warn", "payload": "alternate spelling"}
