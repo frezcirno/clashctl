@@ -133,7 +133,7 @@ class AppState:
             else "ok"
         )
         return (
-            f"[clashctl-py @ {elapsed}s]  status: {err}\n"
+            f"[clashctl @ {elapsed}s]  status: {err}\n"
             f"clash version: {ver}\n"
             f"connections:   {n_conns} active   "
             f"(↑ total {self.connection_totals[0]:>10}  "

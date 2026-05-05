@@ -1,4 +1,4 @@
-# clashctl-py
+# clashctl
 
 Python 3 rewrite of [clashctl](https://github.com/George-Miao/clashctl) — a [Textual](https://textual.textualize.io/)-based TUI for the [Clash](https://github.com/Dreamacro/clash) (and [mihomo](https://github.com/MetaCubeX/mihomo)) external-controller REST API.
 
@@ -29,7 +29,8 @@ Notable differences from the Rust original:
 ## Install
 
 ```bash
-cd clashctl-py
+git clone https://github.com/frezcirno/clashctl.git
+cd clashctl
 pip install -e ".[dev]"           # editable + test deps
 # or, with uv:
 uv pip install -e ".[dev]"
@@ -51,16 +52,16 @@ On first launch with no configured server, a modal pops up and walks you through
 
 ### Global (any tab)
 
-| Key | Action |
-|---|---|
-| `q`, `Ctrl+C` | Quit |
-| `1`–`5` | Switch tabs |
-| `Ctrl+S` | Open the server picker (add / delete / switch) |
+| Key           | Action                                         |
+| ------------- | ---------------------------------------------- |
+| `q`, `Ctrl+C` | Quit                                           |
+| `1`–`5`       | Switch tabs                                    |
+| `Ctrl+S`      | Open the server picker (add / delete / switch) |
 
 ### Tab-specific
 
 | Tab     | Key                  | Action                                                                                       |
-|---------|----------------------|----------------------------------------------------------------------------------------------|
+| ------- | -------------------- | -------------------------------------------------------------------------------------------- |
 | Proxies | `t`                  | Test latency for the focused group's normal members (parallel, capped at 8)                  |
 | Proxies | `Enter`              | On a member of a Selector group: switch to it (PUT `/proxies/<group>`)                       |
 | Proxies | `s` / `Shift+s`      | Cycle member sort (name / type / delay × asc / desc)                                         |
@@ -73,12 +74,12 @@ On first launch with no configured server, a modal pops up and walks you through
 
 ### Server picker
 
-| Key | Action |
-|---|---|
-| `a` | Add a new server (opens form) |
-| `d` | Delete the focused server |
+| Key           | Action                                     |
+| ------------- | ------------------------------------------ |
+| `a`           | Add a new server (opens form)              |
+| `d`           | Delete the focused server                  |
 | `u` / `Enter` | Use the focused server (swaps connections) |
-| `Esc` | Close (or quit on first run) |
+| `Esc`         | Close (or quit on first run)               |
 
 ## Config
 
