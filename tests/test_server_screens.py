@@ -11,9 +11,9 @@ from textual.app import App
 from textual.binding import Binding, BindingType
 from textual.widgets import Input, ListView, Static
 
-from clashctl_py.config import AppConfig, Server, load_config
-from clashctl_py.models import Version
-from clashctl_py.tui.screens import ServerAddScreen, ServerSelectScreen
+from clashctl.config import AppConfig, Server, load_config
+from clashctl.models import Version
+from clashctl.tui.screens import ServerAddScreen, ServerSelectScreen
 
 # --- helpers -------------------------------------------------------------
 
@@ -227,10 +227,11 @@ async def test_add_screen_probe_success_dismisses_with_server() -> None:
         def __init__(self, *_a, **_kw): ...
         async def version(self) -> Version:
             return Version(version="v1.18.0", premium=False)
+
         async def aclose(self) -> None: ...
 
     app = _OpenAdd(cfg)
-    with patch("clashctl_py.tui.screens.server_select.Clash", _FakeClash):
+    with patch("clashctl.tui.screens.server_select.Clash", _FakeClash):
         async with app.run_test() as pilot:
             await pilot.pause()
             app.screen.query_one("#name", Input).value = "good"
@@ -251,12 +252,14 @@ async def test_add_screen_probe_failure_keeps_screen_open() -> None:
     class _FailingClash:
         def __init__(self, *_a, **_kw): ...
         async def version(self) -> Version:
-            from clashctl_py.api.errors import ClashError
+            from clashctl.api.errors import ClashError
+
             raise ClashError("connection refused")
+
         async def aclose(self) -> None: ...
 
     app = _OpenAdd(cfg)
-    with patch("clashctl_py.tui.screens.server_select.Clash", _FailingClash):
+    with patch("clashctl.tui.screens.server_select.Clash", _FailingClash):
         async with app.run_test() as pilot:
             await pilot.pause()
             app.screen.query_one("#name", Input).value = "bad"

@@ -30,10 +30,10 @@ dev = [
 ]
 
 [project.scripts]
-clashctl = "clashctl_py.cli:main"
+clashctl = "clashctl.cli:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/clashctl_py"]
+packages = ["src/clashctl"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

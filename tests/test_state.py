@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
-from clashctl_py.models import Connection, Metadata, RuleType
-from clashctl_py.state import ConnectionSpeedTracker
+from clashctl.models import Connection, Metadata, RuleType
+from clashctl.state import ConnectionSpeedTracker
 
 
 def _conn(cid: str, upload: int, download: int) -> Connection:

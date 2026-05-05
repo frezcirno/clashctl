@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from clashctl_py.utils.bytesize import humanize_bytes, humanize_rate
+from clashctl.utils.bytesize import humanize_bytes, humanize_rate
 
 
 @pytest.mark.parametrize(

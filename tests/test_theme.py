@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import pytest
 
-from clashctl_py.models import LogLevel, RuleType
-from clashctl_py.tui.theme import latency_color, log_level_color, rule_type_color
+from clashctl.models import LogLevel, RuleType
+from clashctl.tui.theme import latency_color, log_level_color, rule_type_color
 
 
 @pytest.mark.parametrize(

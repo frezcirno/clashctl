@@ -7,8 +7,8 @@ import httpx
 import pytest
 from textual.message import Message
 
-from clashctl_py.api import Clash
-from clashctl_py.tui.messages import (
+from clashctl.api import Clash
+from clashctl.tui.messages import (
     ConfigUpdate,
     ConnectionsUpdate,
     LogUpdate,
@@ -19,7 +19,7 @@ from clashctl_py.tui.messages import (
     TrafficUpdate,
     VersionUpdate,
 )
-from clashctl_py.tui.poller import Poller
+from clashctl.tui.poller import Poller
 
 
 def _make_client(transport: httpx.MockTransport) -> Clash:
@@ -81,7 +81,9 @@ async def test_fetch_configs_posts_message(mock_transport: httpx.MockTransport) 
     await c.aclose()
 
 
-async def test_fetch_connections_posts_message(mock_transport: httpx.MockTransport) -> None:
+async def test_fetch_connections_posts_message(
+    mock_transport: httpx.MockTransport,
+) -> None:
     c = _make_client(mock_transport)
     posted: list[Message] = []
     p = Poller(c, posted.append)
@@ -204,7 +206,9 @@ async def test_stream_loop_backs_off_on_connect_failure() -> None:
         await task
     await c.aclose()
 
-    errors = [m for m in posted if isinstance(m, NetworkError) and m.source == "traffic"]
+    errors = [
+        m for m in posted if isinstance(m, NetworkError) and m.source == "traffic"
+    ]
     assert len(errors) >= 2
     assert attempts >= 2
 

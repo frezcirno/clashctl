@@ -7,11 +7,11 @@ import asyncio
 import pytest
 from textual.app import App, ComposeResult
 
-from clashctl_py.models import Proxies
-from clashctl_py.state import AppState
-from clashctl_py.tui.messages import ApplySelectionRequest, TestLatencyRequest
-from clashctl_py.tui.widgets import ProxyTreeView
-from clashctl_py.tui.widgets.proxy_tree import _GroupTag, _MemberTag
+from clashctl.models import Proxies
+from clashctl.state import AppState
+from clashctl.tui.messages import ApplySelectionRequest, TestLatencyRequest
+from clashctl.tui.widgets import ProxyTreeView
+from clashctl.tui.widgets.proxy_tree import _GroupTag, _MemberTag
 
 # --- fixtures ------------------------------------------------------------
 
@@ -165,9 +165,7 @@ async def test_members_default_sort_is_delay_asc() -> None:
         grp = tree.root.children[0]
         grp.expand()
         await pilot.pause()
-        names = [
-            c.data.name for c in grp.children if isinstance(c.data, _MemberTag)
-        ]
+        names = [c.data.name for c in grp.children if isinstance(c.data, _MemberTag)]
         assert names == ["fast", "slow", "broken", "untested"]
 
 
@@ -324,4 +322,4 @@ def test_module_imports_in_no_event_loop() -> None:
     """Importing should not require an event loop (sync-friendly)."""
     # If anything top-level invoked asyncio.get_event_loop, this would raise.
     asyncio.new_event_loop().close()
-    from clashctl_py.tui.widgets import proxy_tree as pt  # noqa: F401
+    from clashctl.tui.widgets import proxy_tree as pt  # noqa: F401

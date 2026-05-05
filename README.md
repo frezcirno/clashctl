@@ -1,18 +1,18 @@
 # clashctl-py
 
-Python 3 rewrite of [clashctl](../) — a [Textual](https://textual.textualize.io/)-based TUI for the [Clash](https://github.com/Dreamacro/clash) (and [mihomo](https://github.com/MetaCubeX/mihomo)) external-controller REST API.
+Python 3 rewrite of [clashctl](https://github.com/George-Miao/clashctl) — a [Textual](https://textual.textualize.io/)-based TUI for the [Clash](https://github.com/Dreamacro/clash) (and [mihomo](https://github.com/MetaCubeX/mihomo)) external-controller REST API.
 
 A live dashboard with five tabs: **Status / Proxies / Rules / Conns / Logs**. Server management lives entirely inside the TUI — no `add`/`use`/`del` subcommands.
 
 ```text
-┌─ Status ─────────────────────────────────────────────────────────────────┐
-│ ⇉ Connections        12  │  ▲ ▁▁▃▂▄▇▆▆▅▇▆▆▆▆▇▆▅▆▇▆▆▇▇▆▇▆▆▇  │
-│ ▲ Upload     12.4 KiB/s  │  ▼ ▁▂▁▁▂▁▁▁▁▂▂▂▂▁▂▂▁▂▁▂▁▂▁▁▂▁▂▁  │
-│ ▼ Download    1.2 MiB/s  │                                  │
-│ ▲ Avg.        9.1 KiB/s  │  max ↑ 487 KiB/s  ↓ 4.3 MiB/s    │
-│ ▼ Avg.      812 KiB/s    │                                  │
-│ Clash Ver.       v1.18.0 │                                  │
-└──────────────────────────────────────────────────────────────────────────┘
+┌─ Status ───────────────────────────────────────────────────┐
+│ ⇉ Connections        12 │  ▲ ▁▁▃▂▄▇▆▆▅▇▆▆▆▆▇▆▅▆▇▆▆▇▇▆▇▆▆▇  │
+│ ▲ Upload     12.4 KiB/s │  ▼ ▁▂▁▁▂▁▁▁▁▂▂▂▂▁▂▂▁▂▁▂▁▂▁▁▂▁▂▁  │
+│ ▼ Download    1.2 MiB/s │                                  │
+│ ▲ Avg.        9.1 KiB/s │  max ↑ 487 KiB/s  ↓ 4.3 MiB/s    │
+│ ▼ Avg.        812 KiB/s │                                  │
+│ Clash Ver.      v1.18.0 │                                  │
+└────────────────────────────────────────────────────────────┘
 ```
 
 ## Status
@@ -118,7 +118,7 @@ The TOML can be hand-edited; the TUI rewrites it via `tomli_w` whenever you add/
 ## Architecture
 
 ```text
-src/clashctl_py/
+src/clashctl/
 ├── api/        # httpx async client + line-delimited JSON streams
 ├── models/     # pydantic v2 models for every Clash payload
 ├── state/      # AppState (single source of truth) + sort + speed tracker

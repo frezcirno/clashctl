@@ -4,7 +4,7 @@ from datetime import UTC, datetime, timedelta
 
 import pytest
 
-from clashctl_py.models import (
+from clashctl.models import (
     Connection,
     History,
     Metadata,
@@ -13,7 +13,7 @@ from clashctl_py.models import (
     Rule,
     RuleType,
 )
-from clashctl_py.state import (
+from clashctl.state import (
     ConnectionWithSpeed,
     ConnSort,
     ConnSortBy,

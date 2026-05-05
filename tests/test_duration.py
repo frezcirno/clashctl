@@ -4,7 +4,7 @@ from datetime import UTC, datetime, timedelta
 
 import pytest
 
-from clashctl_py.utils.duration import humanize_seconds, humanize_since
+from clashctl.utils.duration import humanize_seconds, humanize_since
 
 
 @pytest.mark.parametrize(

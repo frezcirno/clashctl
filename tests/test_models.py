@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from clashctl_py.models import (
+from clashctl.models import (
     ClashConfig,
     Connections,
     Delay,

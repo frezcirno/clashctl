@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
-from clashctl_py.models import (
+from clashctl.models import (
     Connection,
     Connections,
     LogLevel,
@@ -17,8 +17,8 @@ from clashctl_py.models import (
     Traffic,
     Version,
 )
-from clashctl_py.models.config import ClashConfig as ClashRuntimeConfig
-from clashctl_py.state import AppState
+from clashctl.models.config import ClashConfig as ClashRuntimeConfig
+from clashctl.state import AppState
 
 
 def _conn(cid: str, upload: int = 0, download: int = 0) -> Connection:

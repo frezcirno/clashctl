@@ -6,9 +6,9 @@ from pathlib import Path
 import httpx
 import pytest
 
-from clashctl_py.api import Clash, stream_logs, stream_traffic
-from clashctl_py.api.errors import AuthError, NotFoundError
-from clashctl_py.models import LogLevel, Mode, ProxyType
+from clashctl.api import Clash, stream_logs, stream_traffic
+from clashctl.api.errors import AuthError, NotFoundError
+from clashctl.models import LogLevel, Mode, ProxyType
 
 FIXTURES = Path(__file__).parent / "fixtures"
 

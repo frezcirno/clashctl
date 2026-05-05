@@ -7,7 +7,7 @@ from datetime import UTC, datetime, timedelta
 import pytest
 from textual.app import App, ComposeResult
 
-from clashctl_py.models import (
+from clashctl.models import (
     Connection,
     Connections,
     Metadata,
@@ -15,7 +15,7 @@ from clashctl_py.models import (
     Rules,
     RuleType,
 )
-from clashctl_py.state import (
+from clashctl.state import (
     AppState,
     ConnSort,
     ConnSortBy,
@@ -23,7 +23,7 @@ from clashctl_py.state import (
     RuleSort,
     RuleSortBy,
 )
-from clashctl_py.tui.widgets import ConnectionListView, RuleListView
+from clashctl.tui.widgets import ConnectionListView, RuleListView
 
 # --- harness helpers ------------------------------------------------------
 

@@ -6,14 +6,14 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from clashctl_py.config import (
+from clashctl.config import (
     AppConfig,
     Server,
     default_config_path,
     load_config,
     save_config,
 )
-from clashctl_py.state import ConnSortBy, Order, ProxySortBy, RuleSortBy
+from clashctl.state import ConnSortBy, Order, ProxySortBy, RuleSortBy
 
 # --- Server ---------------------------------------------------------------
 
@@ -197,6 +197,7 @@ def test_to_runtime_sort_constructs_proper_objects() -> None:
 # Sanity: the env-override used by default_config_path doesn't leak between
 # tests (monkeypatch does its own cleanup; this just documents intent).
 def test_env_override_isolation() -> None:
-    assert "CLASHCTL_CONFIG_PATH" not in os.environ or os.environ[
-        "CLASHCTL_CONFIG_PATH"
-    ] != "/tmp/custom-clashctl.toml"
+    assert (
+        "CLASHCTL_CONFIG_PATH" not in os.environ
+        or os.environ["CLASHCTL_CONFIG_PATH"] != "/tmp/custom-clashctl.toml"
+    )

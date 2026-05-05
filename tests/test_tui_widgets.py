@@ -12,7 +12,7 @@ from datetime import UTC, datetime
 import pytest
 from textual.app import App, ComposeResult
 
-from clashctl_py.models import (
+from clashctl.models import (
     Connection,
     Connections,
     LogLevel,
@@ -22,9 +22,9 @@ from clashctl_py.models import (
     Traffic,
     Version,
 )
-from clashctl_py.state import AppState
-from clashctl_py.tui.widgets import LogView, StatusPanel
-from clashctl_py.tui.widgets.status_panel import StatusCharts, StatusInfo
+from clashctl.state import AppState
+from clashctl.tui.widgets import LogView, StatusPanel
+from clashctl.tui.widgets.status_panel import StatusCharts, StatusInfo
 
 
 def _conn(cid: str, upload: int = 0, download: int = 0) -> Connection:
@@ -86,7 +86,9 @@ async def test_status_panel_mounts(populated_state: AppState) -> None:
         assert charts is not None
 
 
-async def test_status_panel_refresh_updates_sparkline(populated_state: AppState) -> None:
+async def test_status_panel_refresh_updates_sparkline(
+    populated_state: AppState,
+) -> None:
     app = _StatusHarness(populated_state)
     async with app.run_test() as pilot:
         await pilot.pause()
