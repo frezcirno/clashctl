@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import pytest
 from textual.app import App, ComposeResult
@@ -53,7 +53,7 @@ def _conn(
         ),
         rule=rule,
         rule_payload="",
-        start=datetime(2024, 1, 1, tzinfo=UTC) + timedelta(seconds=start_offset_secs),
+        start=datetime(2024, 1, 1, tzinfo=timezone.utc) + timedelta(seconds=start_offset_secs),
         chains=chains or ["GLOBAL", "JP"],
     )
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 from clashctl.models import (
     Connection,
@@ -37,7 +37,7 @@ def _conn(cid: str, upload: int = 0, download: int = 0) -> Connection:
         ),
         rule=RuleType.Match,
         rule_payload="",
-        start=datetime(2024, 1, 1, tzinfo=UTC),
+        start=datetime(2024, 1, 1, tzinfo=timezone.utc),
         chains=[],
     )
 

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Iterable
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Any
 
 from rich.text import Text
@@ -71,7 +71,7 @@ class ConnectionListView(MovableTable):
         if not state.connections:
             return
         sorted_conns = self._sort.apply(state.connections)
-        now = datetime.now(tz=UTC)
+        now = datetime.now(tz=timezone.utc)
         dim = "grey50"
         for cws in sorted_conns:
             c = cws.connection

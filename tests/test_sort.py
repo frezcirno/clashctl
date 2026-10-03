@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import pytest
 
@@ -30,7 +30,7 @@ from clashctl.state import (
 def _proxy(name: str, ptype: ProxyType, delay: int | None) -> tuple[str, Proxy]:
     history = []
     if delay is not None:
-        history.append(History(time=datetime(2024, 1, 1, tzinfo=UTC), delay=delay))
+        history.append(History(time=datetime(2024, 1, 1, tzinfo=timezone.utc), delay=delay))
     return name, Proxy(type=ptype, history=history)
 
 
@@ -64,7 +64,7 @@ def _conn(
         ),
         rule=rule,
         rule_payload="",
-        start=start or datetime(2024, 1, 1, tzinfo=UTC),
+        start=start or datetime(2024, 1, 1, tzinfo=timezone.utc),
         chains=chains or [],
     )
 
@@ -182,7 +182,7 @@ def test_conn_sort_by_download_speed() -> None:
 
 
 def test_conn_sort_by_time_desc_newest_first() -> None:
-    base = datetime(2024, 6, 1, tzinfo=UTC)
+    base = datetime(2024, 6, 1, tzinfo=timezone.utc)
     items = [
         _cws(_conn("old", start=base)),
         _cws(_conn("mid", start=base + timedelta(seconds=10))),

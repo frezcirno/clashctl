@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from collections.abc import Iterable
 from dataclasses import dataclass, field
-from enum import StrEnum
+from enum import Enum
 from typing import TYPE_CHECKING, Any, TypeVar
 
 from clashctl.models import Proxy, Rule
@@ -23,6 +23,10 @@ if TYPE_CHECKING:
     from clashctl.state.speed import ConnectionWithSpeed
 
 T = TypeVar("T")
+
+
+class StrEnum(str, Enum):
+    """Compatibility replacement for :class:`enum.StrEnum` on Python 3.10."""
 
 
 class Order(StrEnum):

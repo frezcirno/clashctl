@@ -1,7 +1,11 @@
 from __future__ import annotations
 
-from enum import StrEnum
+from enum import Enum
 from typing import Any
+
+
+class StrEnum(str, Enum):
+    """Compatibility replacement for :class:`enum.StrEnum` on Python 3.10."""
 
 
 class ProxyType(StrEnum):

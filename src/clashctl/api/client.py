@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from types import TracebackType
-from typing import Any, Self
+from typing import Any
 from urllib.parse import quote
 
 import httpx
@@ -72,7 +72,7 @@ class Clash:
             )
         return self._stream_client
 
-    async def __aenter__(self) -> Self:
+    async def __aenter__(self) -> Clash:
         return self
 
     async def __aexit__(

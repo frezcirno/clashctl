@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import pytest
 
@@ -27,12 +27,12 @@ def test_humanize_seconds(secs: float, expected: str) -> None:
 
 
 def test_humanize_since_uses_passed_now() -> None:
-    start = datetime(2024, 1, 1, 0, 0, 0, tzinfo=UTC)
+    start = datetime(2024, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
     now = start + timedelta(seconds=125)
     assert humanize_since(start, now=now) == "02:05"
 
 
 def test_humanize_since_assumes_utc_when_naive() -> None:
     start = datetime(2024, 1, 1, 0, 0, 0)  # naive
-    now = datetime(2024, 1, 1, 0, 0, 30, tzinfo=UTC)
+    now = datetime(2024, 1, 1, 0, 0, 30, tzinfo=timezone.utc)
     assert humanize_since(start, now=now) == "00:30"

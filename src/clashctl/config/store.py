@@ -3,9 +3,13 @@
 from __future__ import annotations
 
 import os
-import tomllib
 from pathlib import Path
 from typing import Any
+
+try:
+    import tomllib
+except ModuleNotFoundError:  # Python 3.10
+    import tomli as tomllib
 
 import tomli_w
 from platformdirs import user_config_dir

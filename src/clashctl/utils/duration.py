@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 
 def humanize_seconds(seconds: float) -> str:
@@ -20,8 +20,8 @@ def humanize_seconds(seconds: float) -> str:
 def humanize_since(start: datetime, *, now: datetime | None = None) -> str:
     """Format `now - start` using `humanize_seconds`."""
     if now is None:
-        now = datetime.now(tz=UTC)
+        now = datetime.now(tz=timezone.utc)
     if start.tzinfo is None:
-        start = start.replace(tzinfo=UTC)
+        start = start.replace(tzinfo=timezone.utc)
     delta = (now - start).total_seconds()
     return humanize_seconds(delta)
