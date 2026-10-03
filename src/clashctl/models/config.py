@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List
 
 from pydantic import Field, field_validator
 
@@ -19,7 +19,7 @@ class ClashConfig(ClashKebabModel):
     mode: Mode = Mode.Rule
     log_level: LogLevel = LogLevel.Info
     bind_address: str = ""
-    authentication: list[str] = Field(default_factory=list)
+    authentication: List[str] = Field(default_factory=list)
 
     @field_validator("mode", mode="before")
     @classmethod

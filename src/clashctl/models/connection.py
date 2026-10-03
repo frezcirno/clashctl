@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any
+from typing import Any, List
 
 from pydantic import Field, field_validator
 
@@ -27,7 +27,7 @@ class Connection(ClashModel):
     rule: RuleType
     rule_payload: str
     start: datetime
-    chains: list[str] = Field(default_factory=list)
+    chains: List[str] = Field(default_factory=list)
 
     @field_validator("rule", mode="before")
     @classmethod
@@ -36,7 +36,7 @@ class Connection(ClashModel):
 
 
 class Connections(ClashModel):
-    connections: list[Connection] = Field(default_factory=list)
+    connections: List[Connection] = Field(default_factory=list)
     download_total: int = 0
     upload_total: int = 0
 

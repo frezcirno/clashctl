@@ -7,7 +7,7 @@ This is *clashctl's own* config — distinct from Clash's `/configs` payload
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, List, Optional, Tuple
 from urllib.parse import urlparse
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -32,7 +32,7 @@ class Server(_StrictModel):
 
     name: str
     url: str
-    secret: str | None = None
+    secret: Optional[str] = None
 
     @field_validator("secret", mode="before")
     @classmethod
@@ -78,7 +78,7 @@ class SortsConfig(_StrictModel):
     rules: RuleSortConfig = Field(default_factory=RuleSortConfig)
     connections: ConnSortConfig = Field(default_factory=ConnSortConfig)
 
-    def to_runtime(self) -> tuple[ProxySort, RuleSort, ConnSort]:
+    def to_runtime(self) -> Tuple[ProxySort, RuleSort, ConnSort]:
         return (
             ProxySort(by=self.proxies.by, order=self.proxies.order),
             RuleSort(by=self.rules.by, order=self.rules.order),
@@ -105,11 +105,11 @@ class UiConfig(_StrictModel):
 class AppConfig(_StrictModel):
     """Persisted user config."""
 
-    using: str | None = None
-    servers: list[Server] = Field(default_factory=list)
+    using: Optional[str] = None
+    servers: List[Server] = Field(default_factory=list)
     ui: UiConfig = Field(default_factory=UiConfig)
 
-    def using_server(self) -> Server | None:
+    def using_server(self) -> Optional[Server]:
         if self.using is None:
             return None
         for s in self.servers:

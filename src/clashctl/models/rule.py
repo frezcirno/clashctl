@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections import Counter
-from typing import Any
+from typing import Any, Dict, List, Optional
 
 from pydantic import Field, field_validator
 
@@ -21,19 +21,19 @@ class Rule(ClashModel):
 
 
 class Rules(ClashModel):
-    rules: list[Rule] = Field(default_factory=list)
+    rules: List[Rule] = Field(default_factory=list)
 
     @field_validator("rules", mode="before")
     @classmethod
     def _coerce_rules(cls, v: Any) -> Any:
         return [] if v is None else v
 
-    def frequency(self) -> dict[str, int]:
+    def frequency(self) -> Dict[str, int]:
         """Count proxy references in rules, excluding DIRECT/REJECT."""
         return Counter(
             r.proxy for r in self.rules if r.proxy not in {"DIRECT", "REJECT"}
         )
 
-    def most_frequent_proxy(self) -> str | None:
+    def most_frequent_proxy(self) -> Optional[str]:
         freq = self.frequency()
         return max(freq, key=freq.get) if freq else None  # type: ignore[arg-type]
