@@ -15,7 +15,7 @@ Both modals mutate the shared `AppConfig` directly and persist via
 
 from __future__ import annotations
 
-from typing import ClassVar
+from typing import ClassVar, Optional
 
 from pydantic import ValidationError
 from rich.text import Text
@@ -33,7 +33,7 @@ from clashctl.config import AppConfig, Server, save_config
 # --- ServerSelectScreen --------------------------------------------------
 
 
-class ServerSelectScreen(ModalScreen[Server | None]):
+class ServerSelectScreen(ModalScreen[Optional[Server]]):
     """List of configured servers with Use / Add / Delete actions."""
 
     DEFAULT_CSS = """
@@ -180,7 +180,7 @@ class ServerSelectScreen(ModalScreen[Server | None]):
 # --- ServerAddScreen -----------------------------------------------------
 
 
-class ServerAddScreen(ModalScreen[Server | None]):
+class ServerAddScreen(ModalScreen[Optional[Server]]):
     """Add a new server: validates input, then probes `/version`.
 
     Dismisses with the saved `Server` on success or `None` on cancel.

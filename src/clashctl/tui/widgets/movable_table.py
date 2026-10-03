@@ -186,6 +186,10 @@ class MovableTable(DataTable):  # type: ignore[type-arg]
 
     def _refresh_headers(self) -> None:
         """Rewrite column labels from `_columns()` without rebuilding the table."""
-        for col, (label, _) in zip(self.columns.values(), self._columns(), strict=True):
+        columns = list(self.columns.values())
+        labels = self._columns()
+        if len(columns) != len(labels):
+            raise ValueError("column definition count changed after mount")
+        for col, (label, _) in zip(columns, labels):
             col.label = Text.from_markup(label)
         self.refresh()

@@ -16,7 +16,7 @@ owns the Clash client.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, ClassVar
+from typing import TYPE_CHECKING, ClassVar, Union
 
 from rich.text import Text
 from textual.binding import Binding, BindingType
@@ -45,7 +45,7 @@ class _MemberTag:
     name: str
 
 
-_NodeTag = _GroupTag | _MemberTag
+_NodeTag = Union[_GroupTag, _MemberTag]
 
 
 # --- widget --------------------------------------------------------------

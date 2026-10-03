@@ -36,7 +36,7 @@ pip install -e ".[dev]"           # editable + test deps
 uv pip install -e ".[dev]"
 ```
 
-Python 3.10 or newer is required.
+Python 3.9 or newer is required.
 
 ## Run
 
