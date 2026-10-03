@@ -27,3 +27,9 @@ _PYDANTIC_MODEL_FILES = (
 def test_pydantic_models_avoid_python_38_runtime_annotations() -> None:
     for path in _PYDANTIC_MODEL_FILES:
         assert not _PY38_INCOMPATIBLE_ANNOTATION.search(path.read_text()), path
+
+
+def test_runtime_type_aliases_use_typing_protocols() -> None:
+    """`collections.abc.Callable` only became subscriptable in Python 3.9."""
+    poller = (_ROOT / "tui" / "poller.py").read_text()
+    assert "from collections.abc import Callable" not in poller
