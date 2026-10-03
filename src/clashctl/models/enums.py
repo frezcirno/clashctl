@@ -5,7 +5,7 @@ from typing import Any
 
 
 class StrEnum(str, Enum):
-    """Compatibility replacement for :class:`enum.StrEnum` on Python 3.9/3.10."""
+    """Compatibility replacement for :class:`enum.StrEnum` on Python 3.8–3.10."""
 
 
 class ProxyType(StrEnum):

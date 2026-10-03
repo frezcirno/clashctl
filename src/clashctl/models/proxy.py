@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from datetime import datetime
-from typing import Any
+from typing import Any, Dict
 
 from pydantic import Field, RootModel, field_validator
 
@@ -40,7 +40,7 @@ class Proxy(ClashModel):
         return self.history[0].delay
 
 
-class Proxies(RootModel[dict[str, Proxy]]):
+class Proxies(RootModel[Dict[str, Proxy]]):
     """Wrapper for `GET /proxies` response: `{"proxies": {...}}`."""
 
     root: dict[str, Proxy] = Field(default_factory=dict)
